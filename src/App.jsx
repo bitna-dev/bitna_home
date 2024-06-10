@@ -2,7 +2,6 @@ import { Routes } from 'react-router-dom'
 import { Route } from 'react-router-dom'
 import Home from '@pages/Home'
 import Test from '@pages/Test'
-import Navbar from '@components/Navbar'
 import Layout from './components/Layout.jsx'
 
 function App() {

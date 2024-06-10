@@ -1,7 +1,7 @@
-import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import logo from '@assets/logo.png'
 import { colors } from '@styles/colorPalette'
+import { css } from '@emotion/react'
 
 const Navbar = () => {
   return (
