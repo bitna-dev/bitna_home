@@ -2,13 +2,17 @@ import { Routes } from 'react-router-dom'
 import { Route } from 'react-router-dom'
 import Home from '@pages/Home'
 import Test from '@pages/Test'
+import Layout from './components/Layout.jsx'
+
 function App() {
   return (
     <>
-      <Routes>
-        <Route path="/" Component={Home} />
-        <Route path="/test" Component={Test} />
-      </Routes>
+      <Layout>
+        <Routes>
+          <Route path="/" Component={Home} />
+          <Route path="/test" Component={Test} />
+        </Routes>
+      </Layout>
     </>
   )
 }
