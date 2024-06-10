@@ -1,27 +1,41 @@
 name: CI
-
 on: [pull_request]
 
 jobs:
   lint:
     name: Lint
     runs-on: ubuntu-latest
-
+    strategy:
+      matrix:
+        node-version: [20]
     steps:
-      - uses: pnpm/actions/checkout@v4
-      - uses: pnpm/actions/setup-@v4
+      - uses: actions/checkout@v4
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
         with:
           version: 9
-      - run: pnpm install
-      - run: pnpm lint
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'pnpm'
+      - name: Install dependencies
+        run: pnpm install
   build:
-    name: Build
-    runs-on: ubuntu-latest
-
+    runs-on: ubuntu latest
+    strategy:
+      matrix:
+        node-version: [20]
     steps:
-      - uses: pnpm/actions/checkout@v4
-      - uses: pnpm/actions/setup-@v4
+      - uses: actions/checkout@v4
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
         with:
           version: 9
-      - run: pnpm install
-      - run: CI='false' pnpm build
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'pnpm'
+      - name: Install dependencies
+        run: pnpm install
